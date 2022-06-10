@@ -1,5 +1,7 @@
 package vttp2022.workshop4.app;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.Console;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -16,10 +18,12 @@ public class client {
         System.out.println("Connected");
 
         InputStream is = socket.getInputStream();
-        DataInputStream dis = new DataInputStream(is);
+        BufferedInputStream bis = new BufferedInputStream(is);
+        DataInputStream dis = new DataInputStream(bis);
 
         OutputStream os = socket.getOutputStream();
-        DataOutputStream dos = new DataOutputStream(os);
+        BufferedOutputStream bos = new BufferedOutputStream(os);
+        DataOutputStream dos = new DataOutputStream(bos);
 
         String input = cons.readLine("Input cookie command");
 
@@ -30,11 +34,10 @@ public class client {
 
             String serverResponse = dis.readUTF();
             System.out.println(serverResponse.substring(11));
-            
+
             input = cons.readLine("Input cookie command");
         }
         
-
         is.close();
         os.close();
         socket.close();
