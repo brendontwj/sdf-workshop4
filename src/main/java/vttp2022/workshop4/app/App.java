@@ -1,6 +1,7 @@
 package vttp2022.workshop4.app;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Hello world!
@@ -8,8 +9,8 @@ import java.io.File;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
-        System.out.println("Hello World!");
+        System.out.println(cookie.serverCookie());
     }
 }

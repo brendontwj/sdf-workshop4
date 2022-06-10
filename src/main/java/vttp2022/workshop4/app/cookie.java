@@ -24,7 +24,7 @@ public class cookie {
             }
     
             int x = (int) (Math.random()*26); 
-            return cookieTypes.get(x);
+            return "cookie-text" + cookieTypes.get(x);
 
         } catch(FileNotFoundException e) {
             e.printStackTrace();
