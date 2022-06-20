@@ -12,7 +12,9 @@ import java.net.Socket;
 
 public class server {
     public static void main(String[] args) {
-        try{ 
+        try{
+            System.out.println("Server starting, waiting for connection. . . ");
+            cookie cookie = new cookie(); 
             ServerSocket Server = new ServerSocket(12345);
             Socket socket = Server.accept();
             System.out.println("Connected");
@@ -25,21 +27,25 @@ public class server {
             BufferedOutputStream bos = new BufferedOutputStream(os);
             DataOutputStream dos = new DataOutputStream(bos);
             
-            String clientInput = dis.readUTF();
-            System.out.println(clientInput);
+            String clientInput;
+            boolean loop = true;
 
-            while(clientInput != "close")
+            while(loop)
             {
+                clientInput = dis.readUTF();
+                System.out.println(clientInput);
                 if(clientInput.equals("get-cookie")) {
+                    System.out.println(cookie.serverCookie());
                     dos.writeUTF(cookie.serverCookie());
+                } else if (clientInput.equals("exit")) {
+                    loop = false;
                 } else {
                     dos.writeUTF("Input please");
                 }
-                clientInput = dis.readUTF();
+                clientInput = "";
+                System.out.println("One loop completed");
             }
             
-            // System.out.println(cookie.serverCookie());
-
             is.close();
             os.close();
             socket.close();

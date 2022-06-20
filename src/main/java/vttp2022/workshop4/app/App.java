@@ -1,6 +1,5 @@
 package vttp2022.workshop4.app;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -11,6 +10,6 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        System.out.println(cookie.serverCookie());
+        System.out.println("Starting server/client");
     }
 }

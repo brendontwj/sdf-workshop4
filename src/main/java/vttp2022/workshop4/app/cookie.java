@@ -10,11 +10,9 @@ import java.util.List;
 
 public class cookie {
 
-    public static String serverCookie() throws IOException {
+    public String serverCookie() throws IOException {
         try{
             File test = new File("C:\\Users\\Brendon\\JavaProjects\\sdf-workshop4\\src\\main\\java\\vttp2022\\workshop4\\app\\cookie.txt");
-            System.out.println("File opened is " + test.getName()); 
-
             BufferedReader br = new BufferedReader(new FileReader(test));
             List<String> cookieTypes = new LinkedList<String>();
             String line;
@@ -22,8 +20,10 @@ public class cookie {
             {
                 cookieTypes.add(line);
             }
-    
-            int x = (int) (Math.random()*26); 
+            
+            br.close();
+            
+            int x = (int) (Math.random()*(cookieTypes.size())); 
             return "cookie-text" + cookieTypes.get(x);
 
         } catch(FileNotFoundException e) {

@@ -25,18 +25,25 @@ public class client {
         BufferedOutputStream bos = new BufferedOutputStream(os);
         DataOutputStream dos = new DataOutputStream(bos);
 
-        String input = cons.readLine("Input cookie command");
+        String input = "";
+        boolean loop = true;
 
-        while(input != "close")
+        while(loop)
         {
-            dos.writeUTF(input);
-            dos.flush();
-
-            String serverResponse = dis.readUTF();
-            System.out.println(serverResponse.substring(11));
-
-            input = cons.readLine("Input cookie command");
+            input = cons.readLine("Input cookie command:  ");
+            if(input.equals("exit")) {
+                loop = false;
+            } else {
+                dos.writeUTF(input);
+                dos.flush();
+                String serverResponse = dis.readUTF();
+                System.out.println(serverResponse);
+                if(serverResponse.contains("cookie-text"))
+                    System.out.println(serverResponse.substring(11));
+            }
         }
+
+        System.out.println("Thanks for using the cookie generator.");
         
         is.close();
         os.close();
