@@ -18,12 +18,10 @@ public class client {
         System.out.println("Connected");
 
         InputStream is = socket.getInputStream();
-        BufferedInputStream bis = new BufferedInputStream(is);
-        DataInputStream dis = new DataInputStream(bis);
+        DataInputStream dis = new DataInputStream(is);
 
         OutputStream os = socket.getOutputStream();
-        BufferedOutputStream bos = new BufferedOutputStream(os);
-        DataOutputStream dos = new DataOutputStream(bos);
+        DataOutputStream dos = new DataOutputStream(os);
 
         String input = "";
         boolean loop = true;
@@ -34,7 +32,7 @@ public class client {
             if(input.equals("exit")) {
                 loop = false;
             } else {
-                dos.writeUTF(input+"\n");
+                dos.writeUTF(input);
                 dos.flush();
                 String serverResponse = dis.readUTF();
                 System.out.println(serverResponse);

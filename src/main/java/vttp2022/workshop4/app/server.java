@@ -20,12 +20,10 @@ public class server {
             System.out.println("Connected");
 
             InputStream is = socket.getInputStream();
-            BufferedInputStream bis = new BufferedInputStream(is);
-            DataInputStream dis = new DataInputStream(bis);
+            DataInputStream dis = new DataInputStream(is);
 
             OutputStream os = socket.getOutputStream();
-            BufferedOutputStream bos = new BufferedOutputStream(os);
-            DataOutputStream dos = new DataOutputStream(bos);
+            DataOutputStream dos = new DataOutputStream(os);
             
             String clientInput;
             boolean loop = true;
@@ -35,9 +33,8 @@ public class server {
             {
                 clientInput = dis.readUTF();
                 System.out.println(clientInput);
-                if(clientInput.equals("get-cookie"+"\n")) {
+                if(clientInput.equals("get-cookie")) {
                     System.out.println("Got cookie command");
-                    System.out.println(cookie.serverCookie(cookieFilePath));
                     dos.writeUTF(cookie.serverCookie(cookieFilePath));
                 } else if (clientInput.equals("exit")) {
                     loop = false;
