@@ -34,7 +34,7 @@ public class client {
             if(input.equals("exit")) {
                 loop = false;
             } else {
-                dos.writeUTF(input);
+                dos.writeUTF(input+"\n");
                 dos.flush();
                 String serverResponse = dis.readUTF();
                 System.out.println(serverResponse);
