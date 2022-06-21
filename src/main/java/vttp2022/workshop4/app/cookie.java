@@ -9,7 +9,7 @@ import java.util.List;
 
 public class cookie {
 
-    public String serverCookie(String cookieFilePath) throws IOException {
+    public static String serverCookie(String cookieFilePath) throws IOException {
         try{
             BufferedReader br = new BufferedReader(new FileReader(cookieFilePath));
             List<String> cookieTypes = new LinkedList<String>();

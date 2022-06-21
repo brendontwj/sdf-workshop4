@@ -33,14 +33,10 @@ public class client {
                 dos.writeUTF(input);
                 dos.flush();
                 String serverResponse = dis.readUTF();
-                System.out.println(serverResponse);
                 if(serverResponse.contains("cookie-text"))
                     System.out.println(serverResponse.substring(11));
             }
-        }
-
-        System.out.println("Thanks for using the cookie generator.");
-        
+        }       
         is.close();
         os.close();
         socket.close();
