@@ -10,6 +10,6 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
-        System.out.println("Starting server/client");
+        System.out.println("Hello World");
     }
 }
